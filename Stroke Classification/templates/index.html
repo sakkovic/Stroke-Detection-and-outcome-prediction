@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Stroke Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h1 class="jumbotron bg-primary">Stroke Classfication</h1>
+  <br><br>
+  <!-- <input type="file" id="image-input" name="my_image" accept="image/jpeg, image/png, image/jpg">
+  <div id="display-image"></div> -->
+
+
+  <form class="form-horizontal" action="/submit" method="POST" enctype="multipart/form-data">
+
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+      <div class="col-sm-10">
+        <!-- <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd"> -->
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd">
+
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+
+  {% if prediction %}
+
+  <img src= "{{path}}" alt=""width="300px" height="300px">
+  
+<h2> Your Prediction   : <i> {{prediction}} </i></h2>
+
+{% endif %}
+
+  <!-- <img src="C:\Users\MSI GF63\Desktop\ImageClassification\static\77.jpg" alt="" width="300px" height="200px"> -->
+	<!-- {% if prediction %} -->
+  <!-- <img src="C:\Users\MSI GF63\Desktop\ImageClassification\static\"+{{path}} alt="" width="400px" height="400px"> -->
+
+	<!-- <h2> Your Prediction   : <i> {{prediction}} </i></h2> -->
+
+	<!-- {% endif %} -->
+
+</div>
+
+
+
+
+
+
+<style>
+  #display-image{
+  width: 400px;
+  height: 225px;
+  border: 1px solid black;
+  background-position: center;
+  background-size: cover;
+}
+</style>
+<script>
+  const image_input = document.querySelector("#image-input");
+
+image_input.addEventListener("change", function() {
+  const reader = new FileReader();
+  reader.addEventListener("load", () => {
+    const uploaded_image = reader.result;
+    document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+  });
+  reader.readAsDataURL(this.files[0]);
+});
+
+
+</script>
+</body>
+
+</html>
