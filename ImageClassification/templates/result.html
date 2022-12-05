@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+
+        {% if predictionstroke==1 %}
+        
+      <h2> do you have Risk to get a stroke in the future   : <i style="color:red"> {{predictionstroke}} </i></h2>
+      
+      {% endif %}
+      {% if predictionstroke==0 %}
+        
+      <h2> do you have Risk to get a stroke in the future   : <i style="color:green"> {{predictionstroke}} </i></h2>
+      
+      {% endif %}
+
+    </main>
+</body>
+</html>
